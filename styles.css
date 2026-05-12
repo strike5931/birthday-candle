@@ -539,6 +539,11 @@ body.pixel-mode .ambient{
   100% { transform: translateX(-50%) translateY(-100%); }
 }
 .credits-line{line-height:1.4}
+.credits-divider{
+  width:60px;height:1px;
+  background:rgba(216,216,216,.4);
+  margin:8px 0;
+}
 
 /* ---------- Confetti / petals ---------- */
 .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
