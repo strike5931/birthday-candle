@@ -422,7 +422,7 @@ body.pixel-mode .ambient{
   align-self:stretch;
   /* Padding-top scales with viewport so the visual inset between Y and B's
      top stays proportional across sizes. */
-  padding-top:clamp(6px, 1.1vw, 16px);
+  padding-top:clamp(10px, 2.2vw, 28px);
   opacity:0;animation: fadeUp 1s .35s ease forwards;
   /* HAPPY stacks 5 letters vertically and rotates EACH letter 90°
      counter-clockwise — the word reads sideways (head-tilt-left). The
