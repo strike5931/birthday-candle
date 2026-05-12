@@ -427,7 +427,9 @@ body.pixel-mode .ambient{
   font-size:clamp(7px, 1.7vw, 24px);
   line-height:1;
   color:#c8c8c8;
-  text-shadow:0 0 12px rgba(255,170,80,.22);
+  /* No text-shadow on HAPPY — the soft glow extended ~12px above the box,
+     making Y appear to overshoot B's top edge even when the boxes were
+     pixel-aligned. */
 }
 .poster-side span{
   display:block;
