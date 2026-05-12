@@ -398,7 +398,7 @@ body.pixel-mode .ambient{
   display:grid;
   grid-template-columns:auto auto;
   column-gap:clamp(8px, 1.4vw, 22px);
-  row-gap:clamp(16px, 3vh, 36px);
+  row-gap:clamp(4px, .8vh, 12px);
   align-items:center;
   width:max-content;
   font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
