@@ -24,7 +24,7 @@ body{
 
 .hint{
   position:absolute;left:0;right:0;bottom:7vh;text-align:center;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
   font-size:12px;letter-spacing:.32em;text-transform:uppercase;
   color:var(--muted);opacity:0;transition:opacity 1.2s ease;
   pointer-events:none;
@@ -378,7 +378,7 @@ body.pixel-mode .ambient{
 .celebration.show{ opacity:1; pointer-events:auto; }
 
 .celebration .eyebrow{
-  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
   font-size:11px;letter-spacing:.5em;text-transform:uppercase;
   color:var(--warm);opacity:0;transform:translateY(8px);
   animation:fadeUp .9s .2s ease forwards;
@@ -418,7 +418,7 @@ body.pixel-mode .ambient{
 }
 .english{
   margin-top:6px;
-  font-family:"Cormorant Garamond",serif;
+  font-family:"8BIT WONDER","Cormorant Garamond",serif;
   font-size:clamp(13px, 1.2vw, 15px);
   letter-spacing:.5em;text-transform:uppercase;color:var(--muted);
   opacity:0;animation:fadeUp 1s 1.5s ease forwards;
@@ -428,7 +428,7 @@ body.pixel-mode .ambient{
   margin-top:48px;
   background:transparent;border:1px solid rgba(255,180,90,.4);color:var(--ink);
   padding:14px 28px;border-radius:999px;cursor:pointer;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
   font-size:11px;letter-spacing:.4em;text-transform:uppercase;
   opacity:0;animation:fadeUp 1s 1.8s ease forwards;
   transition: background .25s ease, border-color .25s ease, transform .25s ease;
