@@ -412,7 +412,7 @@ body.pixel-mode .ambient{
      accounts for Y's glyph + glow visually appearing a few pixels above its
      bounding box. */
   align-self:stretch;
-  padding-top:6px;
+  padding-top:clamp(10px, 1.5vh, 18px);
   opacity:0;animation: fadeUp 1s .35s ease forwards;
   /* HAPPY stacks 5 letters vertically and rotates EACH letter 90°
      counter-clockwise — the word reads sideways (head-tilt-left). */
