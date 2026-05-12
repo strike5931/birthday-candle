@@ -391,56 +391,38 @@ body.pixel-mode .ambient{
   margin-bottom:28px;
 }
 
-/* Big pixel poster title — HAPPY (small, top) / B [candle] RTHDAY (big) */
+/* Poster title — HAPPY runs vertically on the left as a side label, BIRTHDAY
+   runs horizontally with the candle replacing the "I". */
 .poster-title{
-  display:flex;flex-direction:column;align-items:flex-start;
+  display:flex;flex-direction:row;align-items:center;
+  gap:clamp(20px, 3.5vw, 64px);
   font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
-  font-size:clamp(40px, 9vw, 120px);
-  line-height:1;
-  letter-spacing:.02em;
-  /* Light off-white like CANDLE / NIGHT in the reference poster — the warm
-     text-shadow keeps the candle-lit feel without making the letters orange. */
-  color:#e6e6e6;
-  text-shadow:0 0 60px rgba(255,170,80,.35), 0 0 22px rgba(255,170,80,.45);
   opacity:0;
   animation: fadeUp 1s .35s ease forwards;
 }
-.poster-line{text-align:left}
-.poster-line-top{
-  /* Smaller upper word */
-  font-size:clamp(20px, 3.6vw, 48px);
-  letter-spacing:.32em;
-  /* Muted gray like the small PRESENTS label in the reference poster */
+
+/* HAPPY — vertical side label */
+.poster-side{
+  display:flex;flex-direction:column;align-items:center;
+  font-size:clamp(20px, 3.4vw, 44px);
+  line-height:1.1;
+  letter-spacing:.18em;
   color:#c8c8c8;
   text-shadow:0 0 18px rgba(255,170,80,.25);
-  /* In the vertical stack layout the flame sits between B and the I-slot
-     (inside the stack), not between HAPPY and BIRTHDAY — so HAPPY only needs
-     a small breathing-room gap, not a flame-clearance one. */
-  margin-bottom:clamp(8px, 2vh, 24px);
 }
-.poster-line-split{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-}
+.poster-side span{display:block}
 
-/* Vertical BIRTHDAY stack — each letter on its own row, candle slot at the
-   "I" position (between B and R). Body height ≈ 108px (scaled pixel-mode)
-   doesn't change with font-size, so we leave a generous margin above the
-   slot for the flame and a small one below for the body's bottom overhang. */
-.poster-stack{
-  display:flex;flex-direction:column;align-items:flex-start;
-  font-size:clamp(40px, 7.5vh, 84px);
+/* BIRTHDAY — big horizontal word with candle slot at the "I" position */
+.poster-main{
+  display:flex;align-items:center;
+  /* 8 letters + candle slot + HAPPY column + paddings need to fit on a single
+     line. clamp keeps the word readable on phones without exploding past the
+     viewport on desktop. */
+  font-size:clamp(40px, 8.5vw, 110px);
   line-height:1;
-  letter-spacing:.04em;
-  margin-top:8px;
-}
-.stack-letter{display:block;text-align:left}
-.poster-stack .candle-slot{
-  display:block;
-  width:117px;height:1em;
-  margin-top:clamp(70px, 12vh, 150px);
-  margin-bottom:clamp(20px, 3vh, 36px);
+  letter-spacing:.02em;
+  color:#e6e6e6;
+  text-shadow:0 0 60px rgba(255,170,80,.35), 0 0 22px rgba(255,170,80,.45);
 }
 
 .candle-slot{
