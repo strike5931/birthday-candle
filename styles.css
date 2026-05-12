@@ -417,12 +417,12 @@ body.pixel-mode .ambient{
   grid-column:1;grid-row:1;
   align-self:stretch;
   opacity:0;animation: fadeUp 1s .35s ease forwards;
-  /* 5-row grid forces each letter into an exact 1/5 cell of the column's
-     height, edge-to-edge with no extra leading. Overflow hidden clips any
-     glyph overshoot so the visual top of Y matches B's visual top exactly. */
-  display:grid;
-  grid-template-rows:repeat(5, 1fr);
-  align-items:center;justify-items:center;
+  /* Flex column with space-between pins Y to the container top and H to the
+     container bottom (middle letters spread evenly). overflow:hidden clips
+     any rotated-glyph overshoot, so the visual edges of Y/H exactly match
+     B's top/bottom edges. */
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:space-between;
   overflow:hidden;
   font-size:clamp(7px, 1.7vw, 24px);
   line-height:1;
