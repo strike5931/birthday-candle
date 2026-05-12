@@ -417,19 +417,20 @@ body.pixel-mode .ambient{
   grid-column:1;grid-row:1;
   align-self:stretch;
   opacity:0;animation: fadeUp 1s .35s ease forwards;
-  /* Flex column with space-between pins Y to the container top and H to the
-     container bottom (middle letters spread evenly). overflow:hidden clips
-     any rotated-glyph overshoot, so the visual edges of Y/H exactly match
-     B's top/bottom edges. */
+  /* 8BIT WONDER's em-box has ~15-16% empty space above the cap (measured via
+     canvas: at 134px font, B's visible top is 21px below the box top). To
+     align HAPPY's Y visually with B's cap, we pad HAPPY's top by ~15% of
+     BIRTHDAY's font-size, scaled responsively. */
+  padding-top:calc(clamp(28px, 10.5vw, 140px) * 0.15);
+  /* Flex column with space-between pins Y to the (padded) content top and
+     H to the container bottom. overflow:hidden still clips any
+     rotated-glyph overshoot. */
   display:flex;flex-direction:column;align-items:center;
   justify-content:space-between;
   overflow:hidden;
   font-size:clamp(7px, 1.7vw, 24px);
   line-height:1;
   color:#c8c8c8;
-  /* No text-shadow on HAPPY — the soft glow extended ~12px above the box,
-     making Y appear to overshoot B's top edge even when the boxes were
-     pixel-aligned. */
 }
 .poster-side span{
   display:block;
