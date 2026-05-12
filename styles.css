@@ -407,6 +407,9 @@ body.pixel-mode .ambient{
 /* HAPPY — vertical side label */
 .poster-side{
   grid-column:1;grid-row:1;
+  /* Bottom-align inside the BIRTHDAY row so the final letter (H) lines up
+     with the baseline / bottom of B. */
+  align-self:end;
   opacity:0;animation: fadeUp 1s .35s ease forwards;
   /* HAPPY stacks 5 letters vertically and rotates EACH letter 90°
      counter-clockwise, so the word reads sideways (head-tilt-left). Font
