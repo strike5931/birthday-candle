@@ -1,3 +1,9 @@
+@font-face{
+  font-family:'Zpix';
+  src:url('https://cdn.jsdelivr.net/gh/SolidZORO/zpix-pixel-font/dist/zpix.ttf') format('truetype');
+  font-display:swap;
+}
+
 :root{
   --bg-1:#0d0a08;
   --bg-2:#1a120c;
@@ -11,7 +17,7 @@
 html,body{
   margin:0;padding:0;height:100%;overflow:hidden;
   background:#000;color:var(--ink);
-  font-family:"Noto Serif TC","Cormorant Garamond",serif;
+  font-family:"Zpix","Noto Serif TC","Cormorant Garamond",serif;
 }
 body{
   background:
@@ -24,7 +30,7 @@ body{
 
 .hint{
   position:absolute;left:0;right:0;bottom:7vh;text-align:center;
-  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","Zpix","JetBrains Mono",ui-monospace,monospace;
   font-size:12px;letter-spacing:.32em;text-transform:uppercase;
   color:var(--muted);opacity:0;transition:opacity 1.2s ease;
   pointer-events:none;
@@ -378,7 +384,7 @@ body.pixel-mode .ambient{
 .celebration.show{ opacity:1; pointer-events:auto; }
 
 .celebration .eyebrow{
-  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","Zpix","JetBrains Mono",ui-monospace,monospace;
   font-size:11px;letter-spacing:.5em;text-transform:uppercase;
   color:var(--warm);opacity:0;transform:translateY(8px);
   animation:fadeUp .9s .2s ease forwards;
@@ -386,7 +392,7 @@ body.pixel-mode .ambient{
 }
 
 .title{
-  font-family:"Noto Serif TC",serif;
+  font-family:"Zpix","Noto Serif TC",serif;
   font-weight:900;
   font-size:clamp(56px, 12vw, 180px);
   line-height:.95;
@@ -410,7 +416,7 @@ body.pixel-mode .ambient{
 
 .subtitle{
   margin-top:22px;
-  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-family:"Zpix","Cormorant Garamond",serif;
   font-size:clamp(18px, 2vw, 26px);
   color:var(--warm-strong);
   opacity:0;animation:fadeUp 1s 1.2s ease forwards;
@@ -428,7 +434,7 @@ body.pixel-mode .ambient{
   margin-top:48px;
   background:transparent;border:1px solid rgba(255,180,90,.4);color:var(--ink);
   padding:14px 28px;border-radius:999px;cursor:pointer;
-  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
+  font-family:"8BIT WONDER","Zpix","JetBrains Mono",ui-monospace,monospace;
   font-size:11px;letter-spacing:.4em;text-transform:uppercase;
   opacity:0;animation:fadeUp 1s 1.8s ease forwards;
   transition: background .25s ease, border-color .25s ease, transform .25s ease;
