@@ -398,8 +398,10 @@ body.pixel-mode .ambient{
   font-size:clamp(40px, 9vw, 120px);
   line-height:1;
   letter-spacing:.02em;
-  color:var(--ink);
-  text-shadow:0 0 60px rgba(255,170,80,.5), 0 0 22px rgba(255,170,80,.65);
+  /* Light off-white like CANDLE / NIGHT in the reference poster — the warm
+     text-shadow keeps the candle-lit feel without making the letters orange. */
+  color:#e6e6e6;
+  text-shadow:0 0 60px rgba(255,170,80,.35), 0 0 22px rgba(255,170,80,.45);
   opacity:0;
   animation: fadeUp 1s .35s ease forwards;
 }
@@ -408,8 +410,9 @@ body.pixel-mode .ambient{
   /* Smaller upper word — keeps the flame from bumping its baseline */
   font-size:clamp(20px, 3.6vw, 48px);
   letter-spacing:.32em;
-  color:var(--warm-strong);
-  text-shadow:0 0 24px rgba(255,170,80,.4);
+  /* Muted gray like the small PRESENTS label in the reference poster */
+  color:#c8c8c8;
+  text-shadow:0 0 18px rgba(255,170,80,.25);
   margin-bottom:clamp(120px, 22vw, 240px);
 }
 .poster-line-split{
