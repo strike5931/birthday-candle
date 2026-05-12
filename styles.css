@@ -458,6 +458,16 @@ body.pixel-mode .ambient{
   0%  { transform: translateY(40px); opacity:0; filter:blur(8px) }
   100%{ transform: translateY(0);   opacity:1; filter:blur(0) }
 }
+/* Pixel mode needs the intro animation to bake in scale(.45) — otherwise the
+   animation's transform overrides the base scale during play, and the candle
+   "pops" from full size to .45 when the animation ends. */
+body.pixel-mode .stage.intro .candle-wrap{
+  animation: rise-in-pixel 1.6s .1s cubic-bezier(.2,.8,.25,1) backwards;
+}
+@keyframes rise-in-pixel{
+  0%  { transform: translateY(40px) scale(.45); opacity:0; filter:blur(8px) }
+  100%{ transform: translateY(0)    scale(.45); opacity:1; filter:blur(0) }
+}
 .ambient{ animation: glow-in 2s ease backwards; }
 @keyframes glow-in{
   0%{opacity:0}100%{opacity:1}
