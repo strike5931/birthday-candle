@@ -13,6 +13,24 @@
 
   let state = 'idle'; // idle -> swaying -> out
 
+  // Pixel-mode body sits below the wrap's geometric centre because the wrap is
+  // 560 tall and the body bottom anchors near the wrap bottom. Empirically the
+  // visual body centre is ~29px south of the wrap centre when scale(.45) is
+  // applied with transform-origin 50% 95%.
+  const BODY_OFFSET_Y = 29;
+
+  function alignStageToCandleSlot() {
+    const slot = document.querySelector('.candle-slot');
+    if (!slot) return;
+    // Caller guarantees the stage is at its natural (un-translated) position,
+    // so the slot↔wrap delta is the translation we want.
+    const slotRect = slot.getBoundingClientRect();
+    const wrapRect = candleWrap.getBoundingClientRect();
+    const dx = (slotRect.left + slotRect.width / 2) - (wrapRect.left + wrapRect.width / 2);
+    const dy = (slotRect.top + slotRect.height / 2) - (wrapRect.top + wrapRect.height / 2 + BODY_OFFSET_Y);
+    stage.style.transform = `translate(${dx}px, ${dy}px)`;
+  }
+
   function setHint(text) {
     if (!text) { hint.classList.remove('show'); return; }
     hint.innerHTML = '<span class="dot"></span> ' + text + ' <span class="dot"></span>';
@@ -42,9 +60,13 @@
       flame.classList.remove('out');
       smoke.classList.remove('go');
       ambient.classList.remove('out');
-      stage.classList.add('celebrating');
       celebration.classList.add('show');
       celebration.setAttribute('aria-hidden', 'false');
+      // After the celebration is in the DOM and laid out, measure .candle-slot
+      // and slide the stage to align the candle body with it. Using setTimeout
+      // instead of rAF — some embedding environments throttle/skip rAF in
+      // ways that prevent the callback from firing reliably.
+      setTimeout(alignStageToCandleSlot, 60);
       launchConfetti();
       setTimeout(launchConfetti, 900);
       setTimeout(launchConfetti, 1900);
@@ -80,6 +102,7 @@
     smoke.classList.remove('go');
     ambient.classList.remove('out');
     stage.classList.remove('faded', 'celebrating');
+    stage.style.transform = '';
     celebration.classList.remove('show');
     celebration.setAttribute('aria-hidden', 'true');
     confetti.innerHTML = '';
