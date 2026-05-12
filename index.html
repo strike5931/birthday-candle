@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>生日快樂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="pixel-mode">
+
+<div id="ambient" class="ambient"></div>
+
+<div id="stage" class="stage intro">
+  <div id="candleWrap" class="candle-wrap" role="button" aria-label="蠟燭" tabindex="0">
+    <div class="plate"></div>
+    <div class="candle">
+      <div class="drip d1"></div>
+      <div class="drip d2"></div>
+      <div class="drip d3"></div>
+      <div class="drip d4"></div>
+      <div class="drip d5"></div>
+      <div class="drip d6"></div>
+      <div class="rim"></div>
+      <div class="wick"></div>
+      <div id="flame" class="flame-stack style-pixel">
+        <div class="flame"></div>
+        <div class="flame inner"></div>
+        <div class="flame core"></div>
+        <div class="tongue l"></div>
+        <div class="tongue r"></div>
+        <div class="spark s1"></div>
+        <div class="spark s2"></div>
+        <div class="spark s3"></div>
+        <div class="spark s4"></div>
+        <div class="pixel"></div>
+      </div>
+      <div id="smoke" class="smoke"></div>
+    </div>
+  </div>
+</div>
+
+<div id="hint" class="hint show"><span class="dot"></span> 點一下蠟燭 <span class="dot"></span></div>
+
+<div id="celebration" class="celebration" aria-hidden="true">
+  <div class="eyebrow" id="eyebrow">— 電子蠟燭提供三個願望 —</div>
+  <div class="title" id="title">
+    <span>生</span><span>日</span><span class="gap"></span><span>快</span><span>樂</span>
+  </div>
+  <div class="subtitle" id="subtitle">出國順利，天天開心，健康平安</div>
+  <div class="english" id="english">happy birthday</div>
+  <button class="replay" id="replay">再點一次</button>
+</div>
+
+<div class="confetti" id="confetti"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
