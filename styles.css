@@ -12,7 +12,15 @@
   --warm-deep:#ff7a2a;
   --ink:#f3e7d4;
   --muted:#8b7763;
+  /* Candle pixel-mode scale — adjusted per viewport so the candle stays
+     roughly the same width as a BIRTHDAY letter. CSS lengths can't divide
+     cleanly into unitless numbers, so we step the scale with media queries. */
+  --candle-scale:.45;
 }
+@media (max-width:1024px){ :root{ --candle-scale:.34; } }
+@media (max-width:768px) { :root{ --candle-scale:.26; } }
+@media (max-width:560px) { :root{ --candle-scale:.18; } }
+@media (max-width:400px) { :root{ --candle-scale:.13; } }
 *{box-sizing:border-box}
 html,body{
   margin:0;padding:0;height:100%;overflow:hidden;
@@ -287,7 +295,7 @@ body{
 /* ============ PIXEL CANDLE BODY ============ */
 body.pixel-mode{ image-rendering: pixelated; }
 body.pixel-mode .candle-wrap{
-  transform: scale(.45); transform-origin: 50% 95%;
+  transform: scale(var(--candle-scale)); transform-origin: 50% 95%;
 }
 body.pixel-mode .drip{ display:none; }
 body.pixel-mode .candle::before,
@@ -412,13 +420,16 @@ body.pixel-mode .ambient{
      accounts for Y's glyph + glow visually appearing a few pixels above its
      bounding box. */
   align-self:stretch;
-  padding-top:clamp(10px, 1.5vh, 18px);
+  /* Padding-top scales with viewport so the visual inset between Y and B's
+     top stays proportional across sizes. */
+  padding-top:clamp(6px, 1.1vw, 16px);
   opacity:0;animation: fadeUp 1s .35s ease forwards;
   /* HAPPY stacks 5 letters vertically and rotates EACH letter 90°
-     counter-clockwise — the word reads sideways (head-tilt-left). */
+     counter-clockwise — the word reads sideways (head-tilt-left). The
+     clamp keeps HAPPY ≈ 1/6 of BIRTHDAY so 5 letters + gaps fit B's height. */
   display:flex;flex-direction:column;align-items:center;
   justify-content:space-between;
-  font-size:clamp(12px, 1.7vw, 22px);
+  font-size:clamp(7px, 1.7vw, 24px);
   line-height:1;
   color:#c8c8c8;
   text-shadow:0 0 12px rgba(255,170,80,.22);
@@ -436,7 +447,7 @@ body.pixel-mode .ambient{
   /* 8 letters + candle slot + HAPPY column + paddings need to fit on a single
      line. clamp keeps the word readable on phones without exploding past the
      viewport on desktop. */
-  font-size:clamp(48px, 10.5vw, 140px);
+  font-size:clamp(28px, 10.5vw, 140px);
   line-height:1;
   letter-spacing:.02em;
   color:#e6e6e6;
@@ -445,8 +456,9 @@ body.pixel-mode .ambient{
 
 .candle-slot{
   display:inline-block;
-  /* Matches pixel-mode candle width: 260 × .45 = 117px */
-  width:117px;height:1em;
+  /* Candle visual width = candle-wrap (260px) × the responsive scale. */
+  width:calc(260px * var(--candle-scale));
+  height:1em;
 }
 
 /* PROCESSION-style red accent under BIRTHDAY only — grid-column:2 keeps the
@@ -556,8 +568,8 @@ body.pixel-mode .stage.intro .candle-wrap{
   animation: rise-in-pixel 1.6s .1s cubic-bezier(.2,.8,.25,1) backwards;
 }
 @keyframes rise-in-pixel{
-  0%  { transform: translateY(40px) scale(.45); opacity:0; filter:blur(8px) }
-  100%{ transform: translateY(0)    scale(.45); opacity:1; filter:blur(0) }
+  0%  { transform: translateY(40px) scale(var(--candle-scale)); opacity:0; filter:blur(8px) }
+  100%{ transform: translateY(0)    scale(var(--candle-scale)); opacity:1; filter:blur(0) }
 }
 .ambient{ animation: glow-in 2s ease backwards; }
 @keyframes glow-in{
