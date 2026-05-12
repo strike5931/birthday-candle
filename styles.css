@@ -407,19 +407,42 @@ body.pixel-mode .ambient{
 }
 .poster-line{text-align:left}
 .poster-line-top{
-  /* Smaller upper word — keeps the flame from bumping its baseline */
+  /* Smaller upper word */
   font-size:clamp(20px, 3.6vw, 48px);
   letter-spacing:.32em;
   /* Muted gray like the small PRESENTS label in the reference poster */
   color:#c8c8c8;
   text-shadow:0 0 18px rgba(255,170,80,.25);
-  margin-bottom:clamp(120px, 22vw, 240px);
+  /* In the vertical stack layout the flame sits between B and the I-slot
+     (inside the stack), not between HAPPY and BIRTHDAY — so HAPPY only needs
+     a small breathing-room gap, not a flame-clearance one. */
+  margin-bottom:clamp(8px, 2vh, 24px);
 }
 .poster-line-split{
   display:flex;
   align-items:center;
   justify-content:flex-start;
 }
+
+/* Vertical BIRTHDAY stack — each letter on its own row, candle slot at the
+   "I" position (between B and R). Body height ≈ 108px (scaled pixel-mode)
+   doesn't change with font-size, so we leave a generous margin above the
+   slot for the flame and a small one below for the body's bottom overhang. */
+.poster-stack{
+  display:flex;flex-direction:column;align-items:flex-start;
+  font-size:clamp(40px, 7.5vh, 84px);
+  line-height:1;
+  letter-spacing:.04em;
+  margin-top:8px;
+}
+.stack-letter{display:block;text-align:left}
+.poster-stack .candle-slot{
+  display:block;
+  width:117px;height:1em;
+  margin-top:clamp(70px, 12vh, 150px);
+  margin-bottom:clamp(20px, 3vh, 36px);
+}
+
 .candle-slot{
   display:inline-block;
   /* Matches pixel-mode candle width: 260 × .45 = 117px */
@@ -524,6 +547,6 @@ body.pixel-mode .stage.intro .candle-wrap{
 /* Left-aligned poster layout */
 .celebration{
   align-items:flex-start;
-  justify-content:center;
+  justify-content:flex-start;
   padding:6vh 7vw;
 }
