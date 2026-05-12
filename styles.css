@@ -391,43 +391,64 @@ body.pixel-mode .ambient{
   margin-bottom:28px;
 }
 
+/* Big pixel poster title — HAPPY / BIRTH [candle] DAY */
+.poster-title{
+  display:flex;flex-direction:column;align-items:stretch;
+  font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
+  font-size:clamp(40px, 9vw, 120px);
+  line-height:1;
+  letter-spacing:.02em;
+  color:var(--ink);
+  text-shadow:0 0 60px rgba(255,170,80,.5), 0 0 22px rgba(255,170,80,.65);
+  opacity:0;
+  animation: fadeUp 1s .35s ease forwards;
+}
+.poster-line{text-align:center}
+.poster-line-split{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+}
+.poster-line-split .poster-half:first-of-type{text-align:right;padding-right:.18em}
+.poster-line-split .poster-half:last-of-type{text-align:left;padding-left:.18em}
+.candle-slot{
+  display:inline-block;
+  /* Matches pixel-mode candle width: 260 × .45 = 117px */
+  width:117px;height:1em;
+}
+
+/* Chinese title — now a smaller secondary line */
 .title{
+  margin-top:6px;
   font-family:"Zpix","Noto Serif TC",serif;
   font-weight:900;
-  font-size:clamp(56px, 12vw, 180px);
-  line-height:.95;
-  letter-spacing:.04em;
-  color:var(--ink);
-  text-shadow:0 0 60px rgba(255,170,80,.45), 0 0 20px rgba(255,170,80,.6);
-  display:flex;gap:.05em;
+  font-size:clamp(22px, 3vw, 40px);
+  line-height:1;
+  letter-spacing:.12em;
+  color:var(--warm-strong);
+  text-shadow:0 0 24px rgba(255,170,80,.35);
+  display:flex;gap:.05em;justify-content:center;
 }
 .title span{
-  display:inline-block;opacity:0;transform:translateY(40px) rotate(-6deg);
+  display:inline-block;opacity:0;transform:translateY(24px) rotate(-6deg);
   animation: drop .7s cubic-bezier(.2,.8,.25,1.2) forwards;
 }
-.title span:nth-child(1){animation-delay:.35s}
-.title span:nth-child(2){animation-delay:.50s}
-.title span:nth-child(3){animation-delay:.78s}
-.title span:nth-child(4){animation-delay:.93s}
+.title span:nth-child(1){animation-delay:.80s}
+.title span:nth-child(2){animation-delay:.92s}
+.title span:nth-child(3){animation-delay:1.08s}
+.title span:nth-child(4){animation-delay:1.20s}
 @keyframes drop{
   to{opacity:1;transform:translateY(0) rotate(0)}
 }
 .title .gap{width:.35em}
 
 .subtitle{
-  margin-top:22px;
+  margin-top:16px;
   font-family:"Zpix","Cormorant Garamond",serif;
-  font-size:clamp(18px, 2vw, 26px);
-  color:var(--warm-strong);
-  opacity:0;animation:fadeUp 1s 1.2s ease forwards;
-  letter-spacing:.04em;
-}
-.english{
-  margin-top:6px;
-  font-family:"8BIT WONDER","Cormorant Garamond",serif;
-  font-size:clamp(13px, 1.2vw, 15px);
-  letter-spacing:.5em;text-transform:uppercase;color:var(--muted);
+  font-size:clamp(16px, 1.8vw, 22px);
+  color:var(--muted);
   opacity:0;animation:fadeUp 1s 1.5s ease forwards;
+  letter-spacing:.08em;
 }
 
 .replay{
@@ -480,3 +501,11 @@ body.pixel-mode .stage.intro .candle-wrap{
 }
 
 .stage.faded{ opacity:.25; filter:blur(2px); transform:scale(.96); transition:all 1.2s ease; }
+
+/* During the celebration, slide the candle up so its body sits in the BIRTHDAY
+   text line (visually replacing the "I"), with the flame extending above
+   between HAPPY and BIRTHDAY. The offset assumes pixel-mode candle scale(.45). */
+.stage.celebrating{
+  transform: translateY(-180px);
+  transition: transform 1.2s cubic-bezier(.2,.8,.25,1);
+}

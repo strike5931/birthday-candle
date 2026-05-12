@@ -37,7 +37,12 @@
     ambient.classList.add('out');
     setHint('');
     setTimeout(() => {
-      stage.classList.add('faded');
+      // Re-light the candle for the celebration — it's now the "I" in BIRTHDAY,
+      // so it needs to be visible and lit, not blown-out and faded.
+      flame.classList.remove('out');
+      smoke.classList.remove('go');
+      ambient.classList.remove('out');
+      stage.classList.add('celebrating');
       celebration.classList.add('show');
       celebration.setAttribute('aria-hidden', 'false');
       launchConfetti();
@@ -74,17 +79,25 @@
     flame.classList.remove('sway', 'out');
     smoke.classList.remove('go');
     ambient.classList.remove('out');
-    stage.classList.remove('faded');
+    stage.classList.remove('faded', 'celebrating');
     celebration.classList.remove('show');
     celebration.setAttribute('aria-hidden', 'true');
     confetti.innerHTML = '';
     setHint('點一下蠟燭');
+    // Re-trigger the Chinese letter-drop on .title
     const title = document.getElementById('title');
     title.querySelectorAll('span').forEach(s => {
       s.style.animation = 'none';
       void s.offsetWidth;
       s.style.animation = '';
     });
+    // Re-trigger the poster-title fade
+    const poster = document.querySelector('.poster-title');
+    if (poster) {
+      poster.style.animation = 'none';
+      void poster.offsetWidth;
+      poster.style.animation = '';
+    }
   }
 
   candleWrap.addEventListener('click', step);
