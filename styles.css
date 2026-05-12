@@ -415,20 +415,15 @@ body.pixel-mode .ambient{
 /* HAPPY — vertical side label */
 .poster-side{
   grid-column:1;grid-row:1;
-  /* Stretch to the BIRTHDAY row's full height and space the letters out, so
-     Y aligns with B's top and H aligns with B's bottom. The small padding-top
-     accounts for Y's glyph + glow visually appearing a few pixels above its
-     bounding box. */
   align-self:stretch;
-  /* Padding-top scales with viewport so the visual inset between Y and B's
-     top stays proportional across sizes. */
-  padding-top:clamp(10px, 2.2vw, 28px);
   opacity:0;animation: fadeUp 1s .35s ease forwards;
-  /* HAPPY stacks 5 letters vertically and rotates EACH letter 90°
-     counter-clockwise — the word reads sideways (head-tilt-left). The
-     clamp keeps HAPPY ≈ 1/6 of BIRTHDAY so 5 letters + gaps fit B's height. */
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:space-between;
+  /* 5-row grid forces each letter into an exact 1/5 cell of the column's
+     height, edge-to-edge with no extra leading. Overflow hidden clips any
+     glyph overshoot so the visual top of Y matches B's visual top exactly. */
+  display:grid;
+  grid-template-rows:repeat(5, 1fr);
+  align-items:center;justify-items:center;
+  overflow:hidden;
   font-size:clamp(7px, 1.7vw, 24px);
   line-height:1;
   color:#c8c8c8;
