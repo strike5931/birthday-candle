@@ -27,7 +27,12 @@
     // so the slot↔wrap delta is the translation we want.
     const slotRect = slot.getBoundingClientRect();
     const wrapRect = candleWrap.getBoundingClientRect();
-    const dx = (slotRect.left + slotRect.width / 2) - (wrapRect.left + wrapRect.width / 2);
+    // Optical nudge: the candle body's gradient is lit-from-left so its visual
+    // mass sits a touch right of centre — pull the whole rig left by a small
+    // fraction of its width to re-balance.
+    const candleScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--candle-scale')) || 0.45;
+    const xNudge = -260 * candleScale * 0.05;
+    const dx = (slotRect.left + slotRect.width / 2) - (wrapRect.left + wrapRect.width / 2) + xNudge;
     const dy = (slotRect.top + slotRect.height / 2) - (wrapRect.top + wrapRect.height / 2 + BODY_OFFSET_Y);
     stage.style.transform = `translate(${dx}px, ${dy}px)`;
   }
