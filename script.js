@@ -107,13 +107,11 @@
     celebration.setAttribute('aria-hidden', 'true');
     confetti.innerHTML = '';
     setHint('點一下蠟燭');
-    // Re-trigger the Chinese letter-drop on .title
+    // Re-trigger the .title fade-in
     const title = document.getElementById('title');
-    title.querySelectorAll('span').forEach(s => {
-      s.style.animation = 'none';
-      void s.offsetWidth;
-      s.style.animation = '';
-    });
+    title.style.animation = 'none';
+    void title.offsetWidth;
+    title.style.animation = '';
     // Re-trigger the poster-title fade
     const poster = document.querySelector('.poster-title');
     if (poster) {
