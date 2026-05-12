@@ -493,6 +493,40 @@ body.pixel-mode .ambient{
 
 @keyframes fadeUp{ to{opacity:1;transform:translateY(0)} }
 
+/* ---------- Credits roll ---------- */
+.credits{
+  position:fixed;
+  top:0;bottom:0;
+  /* right half of the viewport */
+  left:50%;right:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:4;
+}
+.credits-inner{
+  position:absolute;
+  top:0;left:50%;
+  /* start fully below the viewport */
+  transform:translateX(-50%) translateY(100vh);
+  display:flex;flex-direction:column;align-items:center;
+  gap:clamp(10px, 1.4vh, 18px);
+  font-family:"Zpix","Noto Serif TC",serif;
+  font-size:clamp(14px, 1.6vw, 22px);
+  color:#d8d8d8;
+  text-shadow:0 0 14px rgba(255,170,80,.25);
+  text-align:center;
+  white-space:nowrap;
+  letter-spacing:.04em;
+}
+.credits.roll .credits-inner{
+  animation: credits-scroll 28s linear forwards;
+}
+@keyframes credits-scroll{
+  0%   { transform: translateX(-50%) translateY(100vh); }
+  100% { transform: translateX(-50%) translateY(-100%); }
+}
+.credits-line{line-height:1.4}
+
 /* ---------- Confetti / petals ---------- */
 .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
 .piece{

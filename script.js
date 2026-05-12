@@ -8,6 +8,7 @@
   const celebration = document.getElementById('celebration');
   const confetti    = document.getElementById('confetti');
   const replay      = document.getElementById('replay');
+  const credits     = document.getElementById('credits');
 
   const PALETTE = ['#f3e7d4', '#cdb38a', '#8b7763', '#4a3318'];
 
@@ -70,6 +71,8 @@
       launchConfetti();
       setTimeout(launchConfetti, 900);
       setTimeout(launchConfetti, 1900);
+      // After the confetti has had a moment, start the movie-credits roll.
+      setTimeout(() => credits.classList.add('roll'), 5000);
     }, 950);
   }
 
@@ -105,6 +108,7 @@
     stage.style.transform = '';
     celebration.classList.remove('show');
     celebration.setAttribute('aria-hidden', 'true');
+    credits.classList.remove('roll');
     confetti.innerHTML = '';
     setHint('點一下蠟燭');
     // Re-trigger the .title fade-in
