@@ -431,11 +431,20 @@ body.pixel-mode .ambient{
   width:117px;height:1em;
 }
 
-/* Dashed sub-line below the title — matches the PROCESSION-style accent in
-   the reference poster (red, smaller, hanging off the main title). */
+/* title-stack pairs the big title with the sub-line so they share a width;
+   max-content sizes the stack to the title's natural width so the sub-line's
+   right edge can line up with the Y in BIRTHDAY. */
+.title-stack{
+  display:flex;flex-direction:column;align-items:stretch;
+  width:max-content;
+}
+
+/* PROCESSION-style red accent: a solid red line, then 生日快樂。 right-aligned
+   so the period (。) lands flush with the Y of DAY above. */
 .title{
+  display:flex;align-items:center;
   margin-top:clamp(16px, 3vh, 36px);
-  font-family:"Zpix","8BIT WONDER","Noto Serif TC",serif;
+  font-family:"Zpix","Noto Serif TC",serif;
   font-size:clamp(14px, 2vw, 26px);
   line-height:1;
   letter-spacing:.08em;
@@ -444,9 +453,14 @@ body.pixel-mode .ambient{
   opacity:0;
   animation:fadeUp 1s 1s ease forwards;
 }
-@keyframes drop{
-  to{opacity:1;transform:translateY(0) rotate(0)}
+.title-line{
+  flex:1 1 auto;
+  height:2px;
+  background:currentColor;
+  box-shadow:0 0 8px rgba(214,40,40,.5);
+  margin-right:clamp(8px, 1vw, 14px);
 }
+.title-text{white-space:nowrap}
 
 .subtitle{
   margin-top:16px;
