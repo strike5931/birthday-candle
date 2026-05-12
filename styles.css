@@ -391,18 +391,23 @@ body.pixel-mode .ambient{
   margin-bottom:28px;
 }
 
-/* Poster title — HAPPY runs vertically on the left as a side label, BIRTHDAY
-   runs horizontally with the candle replacing the "I". */
-.poster-title{
-  display:flex;flex-direction:row;align-items:center;
-  gap:clamp(20px, 3.5vw, 64px);
+/* Grid that lays out HAPPY (col 1), BIRTHDAY (col 2 row 1) and the red
+   sub-line (col 2 row 2). Putting them in a shared grid lets the sub-line
+   span only the BIRTHDAY column instead of stretching under HAPPY too. */
+.title-stack{
+  display:grid;
+  grid-template-columns:auto auto;
+  column-gap:clamp(20px, 3.5vw, 64px);
+  row-gap:clamp(16px, 3vh, 36px);
+  align-items:center;
+  width:max-content;
   font-family:"8BIT WONDER","JetBrains Mono",ui-monospace,monospace;
-  opacity:0;
-  animation: fadeUp 1s .35s ease forwards;
 }
 
 /* HAPPY — vertical side label */
 .poster-side{
+  grid-column:1;grid-row:1;
+  opacity:0;animation: fadeUp 1s .35s ease forwards;
   display:flex;flex-direction:column;align-items:center;
   font-size:clamp(20px, 3.4vw, 44px);
   line-height:1.1;
@@ -414,6 +419,8 @@ body.pixel-mode .ambient{
 
 /* BIRTHDAY — big horizontal word with candle slot at the "I" position */
 .poster-main{
+  grid-column:2;grid-row:1;
+  opacity:0;animation: fadeUp 1s .35s ease forwards;
   display:flex;align-items:center;
   /* 8 letters + candle slot + HAPPY column + paddings need to fit on a single
      line. clamp keeps the word readable on phones without exploding past the
@@ -431,19 +438,11 @@ body.pixel-mode .ambient{
   width:117px;height:1em;
 }
 
-/* title-stack pairs the big title with the sub-line so they share a width;
-   max-content sizes the stack to the title's natural width so the sub-line's
-   right edge can line up with the Y in BIRTHDAY. */
-.title-stack{
-  display:flex;flex-direction:column;align-items:stretch;
-  width:max-content;
-}
-
-/* PROCESSION-style red accent: a solid red line, then 生日快樂。 right-aligned
-   so the period (。) lands flush with the Y of DAY above. */
+/* PROCESSION-style red accent under BIRTHDAY only — grid-column:2 keeps the
+   line from extending left under the HAPPY side column. */
 .title{
+  grid-column:2;grid-row:2;
   display:flex;align-items:center;
-  margin-top:clamp(16px, 3vh, 36px);
   font-family:"Zpix","Noto Serif TC",serif;
   font-size:clamp(14px, 2vw, 26px);
   line-height:1;
